@@ -167,7 +167,7 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
     return;
   }
 
-  let form = document.getElementById('#form');
+  let form = document.getElementById('form');
 
   if (!form) {
     console.log('no form');
