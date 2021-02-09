@@ -184,4 +184,6 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
       statement: false
     });
   });
+
+  pmd.saveMessagesToEmbeddedData();
 });
