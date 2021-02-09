@@ -23,7 +23,8 @@ var pmd = {
         }
     },
     loadingTime: 3000,
-    messages: []
+    messages: [],
+    question: {}
 };
 
 pmd.addMessage = function(message) {
@@ -163,6 +164,10 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
     return;
   }
 
+  if (!pmd.question.addResponse) {
+    return;
+  }
+
   let form = document.getElementById('Page');
 
   if (!form) {
@@ -177,8 +182,6 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
     if (!i.checked) {
       return;
     }
-
-
 
     pmd.addMessage({
       text: document.getElementById(i.attributes["aria-labelledby"].value).textContent,
