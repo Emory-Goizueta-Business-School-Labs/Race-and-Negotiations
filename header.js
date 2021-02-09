@@ -116,9 +116,7 @@ pmd.messagesToChat = function(chatOrderedList, messages) {
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
-  this.questionclick = function(event, element) {
-    console.log({event, element});
-  }
+  console.log("headerOnload", {pmd});
     /*Place your JavaScript here to run when the page loads*/
     let loadingTime = 3000;
 
@@ -156,5 +154,5 @@ Qualtrics.SurveyEngine.addOnReady(function()
 Qualtrics.SurveyEngine.addOnUnload(function() {
   console.log('headerOnUnload', { context: this, getSelectedChoices: this.getSelectedChoices(), savedPageSubmitData: Qualtrics.SurveyEngine.savedPageSubmitData });
 
-  
+
 });
