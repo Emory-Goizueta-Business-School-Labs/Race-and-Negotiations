@@ -188,4 +188,6 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
   });
 
   pmd.saveMessagesToEmbeddedData();
+
+  console.log('embeddedData', Qualtrics.SurveyEngine.getEmbeddedData('messages'));
 });
