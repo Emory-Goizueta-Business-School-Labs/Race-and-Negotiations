@@ -18,7 +18,8 @@ var pmd = {
             return [];
         }
     },
-    loadingTime: 3000
+    loadingTime: 3000,
+    messages: []
 };
 
 pmd.addMessage = function(message) {
@@ -112,7 +113,7 @@ pmd.messagesToChat = function(chatOrderedList, messages) {
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
-  console.log("headerOnload", {pmd});
+  console.log("headerOnload", {pmd, 'Qualtrics.SurveyEngine.getEmbeddedData(\'messages\');': Qualtrics.SurveyEngine.getEmbeddedData('messages')});
     /*Place your JavaScript here to run when the page loads*/
 
   pmd.messages = pmd.getMessagesFromEmbeddedData();
