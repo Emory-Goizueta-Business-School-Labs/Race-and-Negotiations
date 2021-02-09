@@ -158,3 +158,32 @@ Qualtrics.SurveyEngine.addOnUnload(function() {
 
 
 });
+
+Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
+  console.log('headerOnPageSubmit', {pmd, type});
+
+  if (type !== 'next') {
+    console.log('submit is not next');
+    return;
+  }
+
+  let form = document.getElementById('#form');
+
+  if (!form) {
+    console.log('no form');
+    return;
+  }
+
+  let inputs = form.getInputs();
+  inputs.forEach(i => {
+    if (!i.checked) {
+      return;
+    }
+
+    pmd.addMessage({
+      text: document.getElementById(i.attributes["aria-labelledby"].value),
+      me: true,
+      statement: false
+    });
+  });
+});
