@@ -171,6 +171,8 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
   }
 
   let inputs = form.getInputs();
+  console.log(inputs);
+
   inputs.forEach(i => {
     if (!i.checked) {
       return;
