@@ -1,7 +1,3 @@
-var $Q;
-var qd;
-var q;
-
 var pmd = {
     getMessagesFromEmbeddedData: function() {
         try {
@@ -36,66 +32,32 @@ pmd.getSelectedChoiceValue = function(element) {
       let label_element = document.getElementById(label_id);
       return label_element.firstElementChild.innerText;
 };
-Qualtrics.SurveyEngine.addOnload(function()
-{
-  $Q = Qualtrics.SurveyEngine;
-  qd = this;
-  q = this.question;
 
-console.log('headerOnLoad', {pmd, 'embeddedMessages':'${e://Field/messages}', context: this});
-//console.log(this.getQuestionDisplayed());
-console.log(Qualtrics.SurveyEngine.QuestionInfo);
-console.log(this.questionId);
-console.log(this.questionContainer);
-console.log(this.questionclick);
-
-this.questionclick = function(event, element) {
-  console.log({event, element});
-}
-  /*Place your JavaScript here to run when the page loads*/
-  let loadingTime = 3000;
-
- pmd.messages = pmd.getMessagesFromEmbeddedData();
-
-let sendingMessages = document.querySelectorAll('.sending-message');
-
-let loaders = document.querySelectorAll('.sending-message + .loading');
-
-sendingMessages.forEach(s => {
-  s.style.display = 'none';
-});
-
-loaders.forEach(l => {
-  l.style.display = 'inline-block';
-});
-
-window.setTimeout(() => {
-  sendingMessages.forEach(s => {
-    s.style.display = 'inline';
-  });
+pmd.hideLoaders = function() {
+  loaders = document.querySelectorAll('.sending-message + .loading');
 
   loaders.forEach(l => {
     l.style.display = 'none';
-  });  
-}, loadingTime);
+  });
+};
 
-function hideLoaders() {
+pmd.hideLoaders = function() {
   loaders = document.querySelectorAll('.sending-message + .loading');
 
-loaders.forEach(l => {
+  loaders.forEach(l => {
     l.style.display = 'none';
   });
-}
+};
 
-function showSendingMessages() {
+pmd.showSendingMessages = function() {
   sendingMessages = document.querySelectorAll('.sending-message');
   
   sendingMessages.forEach(s => {
     s.style.display = 'inline';
   }); 
-}
+};
 
-function addMessageToChatList(chatList, message, shouldLoad) {
+pmd.addMessageToChatList = function(chatList, message, shouldLoad) {
   let li = document.createElement('li');
   let classes = ['message'];
   
@@ -129,10 +91,10 @@ function addMessageToChatList(chatList, message, shouldLoad) {
   chatList.appendChild(li);
   
   window.setTimeout(() => {
-    hideLoaders();
-    showSendingMessages();
+    pmd.hideLoaders();
+    pmd.showSendingMessages();
   }, loadingTime);
-}
+};
 
 pmd.messagesToChat = function(chatOrderedList, messages) {
   if (!chatOrderedList) {
@@ -144,7 +106,7 @@ pmd.messagesToChat = function(chatOrderedList, messages) {
   chatOrderedList.className = 'chat-history';
   
   for (let i = 0; i < messages.length; i++) {
-    addMessageToChatList(fragment, messages[i], i + 1 === messages.length);
+    pmd.addMessageToChatList(fragment, messages[i], i + 1 === messages.length);
   }
   
   chatOrderedList.innerHTML = "";
@@ -152,15 +114,47 @@ pmd.messagesToChat = function(chatOrderedList, messages) {
   chatOrderedList.appendChild(fragment);
 };
 
+Qualtrics.SurveyEngine.addOnload(function()
+{
+  this.questionclick = function(event, element) {
+    console.log({event, element});
+  }
+    /*Place your JavaScript here to run when the page loads*/
+    let loadingTime = 3000;
+
+  pmd.messages = pmd.getMessagesFromEmbeddedData();
+
+  let sendingMessages = document.querySelectorAll('.sending-message');
+
+  let loaders = document.querySelectorAll('.sending-message + .loading');
+
+  sendingMessages.forEach(s => {
+    s.style.display = 'none';
+  });
+
+  loaders.forEach(l => {
+    l.style.display = 'inline-block';
+  });
+
+  window.setTimeout(() => {
+    sendingMessages.forEach(s => {
+      s.style.display = 'inline';
+    });
+
+    loaders.forEach(l => {
+      l.style.display = 'none';
+    });  
+  }, loadingTime);
 });
 
 Qualtrics.SurveyEngine.addOnReady(function()
 {
-console.log('headerOnReady', {pmd, 'embeddedMessages':'${e://Field/messages}', context: this });
-pmd.messagesToChat(document.getElementById('chat-history'), pmd.messages);
+  console.log('headerOnReady', {pmd, 'embeddedMessages':'${e://Field/messages}', context: this });
+  pmd.messagesToChat(document.getElementById('chat-history'), pmd.messages);
 });
 
 Qualtrics.SurveyEngine.addOnUnload(function() {
   console.log('headerOnUnload', { context: this, getSelectedChoices: this.getSelectedChoices(), savedPageSubmitData: Qualtrics.SurveyEngine.savedPageSubmitData });
-  console.log(Qualtrics.SurveyEngine.savedPageSubmitData.questionObj.getSelectedChoices());
+
+  
 });
