@@ -5,7 +5,6 @@ var pmd = {
     getMessagesFromEmbeddedData: function() {
         try {
             let messages = Qualtrics.SurveyEngine.getEmbeddedData('messages');
-            console.log({messages});
 
             if (Array.isArray(messages)) {
                 return messages;
@@ -122,7 +121,6 @@ Qualtrics.SurveyEngine.addOnload(function()
     /*Place your JavaScript here to run when the page loads*/
 
   pmd.messages = pmd.getMessagesFromEmbeddedData();
-  console.log(pmd.messages, pmd.messages);
 
   let sendingMessages = document.querySelectorAll('.sending-message');
 
@@ -167,7 +165,7 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
     return;
   }
 
-  let form = document.getElementById('form');
+  let form = document.getElementById('Page');
 
   if (!form) {
     console.log('no form');
