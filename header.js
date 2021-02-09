@@ -5,6 +5,7 @@ var pmd = {
     getMessagesFromEmbeddedData: function() {
         try {
             let messages = Qualtrics.SurveyEngine.getEmbeddedData('messages');
+            console.log({messages});
 
             if (Array.isArray(messages)) {
                 return messages;
