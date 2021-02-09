@@ -1,3 +1,6 @@
+
+    
+
 var pmd = {
     getMessagesFromEmbeddedData: function() {
         try {
@@ -14,7 +17,8 @@ var pmd = {
 
             return [];
         }
-    }
+    },
+    loadingTime: 3000
 };
 
 pmd.addMessage = function(message) {
@@ -34,15 +38,7 @@ pmd.getSelectedChoiceValue = function(element) {
 };
 
 pmd.hideLoaders = function() {
-  loaders = document.querySelectorAll('.sending-message + .loading');
-
-  loaders.forEach(l => {
-    l.style.display = 'none';
-  });
-};
-
-pmd.hideLoaders = function() {
-  loaders = document.querySelectorAll('.sending-message + .loading');
+  let loaders = document.querySelectorAll('.sending-message + .loading');
 
   loaders.forEach(l => {
     l.style.display = 'none';
@@ -50,7 +46,7 @@ pmd.hideLoaders = function() {
 };
 
 pmd.showSendingMessages = function() {
-  sendingMessages = document.querySelectorAll('.sending-message');
+  let sendingMessages = document.querySelectorAll('.sending-message');
   
   sendingMessages.forEach(s => {
     s.style.display = 'inline';
@@ -93,7 +89,7 @@ pmd.addMessageToChatList = function(chatList, message, shouldLoad) {
   window.setTimeout(() => {
     pmd.hideLoaders();
     pmd.showSendingMessages();
-  }, loadingTime);
+  }, pmd.loadingTime);
 };
 
 pmd.messagesToChat = function(chatOrderedList, messages) {
@@ -118,7 +114,6 @@ Qualtrics.SurveyEngine.addOnload(function()
 {
   console.log("headerOnload", {pmd});
     /*Place your JavaScript here to run when the page loads*/
-    let loadingTime = 3000;
 
   pmd.messages = pmd.getMessagesFromEmbeddedData();
 
@@ -142,7 +137,7 @@ Qualtrics.SurveyEngine.addOnload(function()
     loaders.forEach(l => {
       l.style.display = 'none';
     });  
-  }, loadingTime);
+  }, pmd.loadingTime);
 });
 
 Qualtrics.SurveyEngine.addOnReady(function()
