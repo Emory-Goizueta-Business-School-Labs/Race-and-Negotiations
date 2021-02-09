@@ -178,8 +178,10 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
       return;
     }
 
+
+
     pmd.addMessage({
-      text: document.getElementById(i.attributes["aria-labelledby"].value),
+      text: document.getElementById(i.attributes["aria-labelledby"].value).textContent,
       me: true,
       statement: false
     });
