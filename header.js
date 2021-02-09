@@ -152,9 +152,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 });
 
 Qualtrics.SurveyEngine.addOnUnload(function() {
-  console.log('headerOnUnload', { context: this, getSelectedChoices: this.getSelectedChoices(), savedPageSubmitData: Qualtrics.SurveyEngine.savedPageSubmitData });
-
-
+  console.log('headerOnUnload', { pmd });
 });
 
 Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
