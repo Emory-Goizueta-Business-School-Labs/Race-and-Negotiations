@@ -118,6 +118,7 @@ Qualtrics.SurveyEngine.addOnload(function()
     /*Place your JavaScript here to run when the page loads*/
 
   pmd.messages = pmd.getMessagesFromEmbeddedData();
+  console.log(pmd.messages, pmd.messages);
 
   let sendingMessages = document.querySelectorAll('.sending-message');
 
