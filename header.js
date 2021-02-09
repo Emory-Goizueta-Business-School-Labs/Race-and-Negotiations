@@ -11,6 +11,10 @@ var pmd = {
                 return messages;
             }
 
+            if (typeof messages === 'string') {
+              return JSON.parse(messages);
+            }
+
             return [];
         }
         catch(e) {
