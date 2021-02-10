@@ -32,7 +32,26 @@ pmd.questionInit = function(questionContext) {
     context: questionContext,
     negotiate: false,
     addSelectedChoiceValue: false,
+    selectedChoiceValue: '',
+    selectedChoiceRecodeValue: ''
   };
+};
+
+pmd.updateSelectedValues = function() {
+  let selectedChoices = pmd.question.context.getSelectedChoices();
+  console.log({selectedChoices});
+
+  if (selectedChoices.length === 0) {
+    pmd.selectedChoiceRecodeValue = '';
+    pmd.selectedChoiceValue = '';
+  }
+
+  if (selectedChoices.length > 1) {
+    console.log('more than 1 choice selected');
+  }
+
+  pmd.question.selectedChoiceValue = pmd.question.context.getChoiceValue(selectedChoices);
+  pmd.question.selectedChoiceRecodeValue = pmd.question.context.getChoiceRecodeValue(selectedChoices);
 };
 
 pmd.addMessage = function(message) {
@@ -42,13 +61,13 @@ pmd.addMessage = function(message) {
 pmd.saveMessagesToEmbeddedData = function() {
     Qualtrics.SurveyEngine.setEmbeddedData('messages', JSON.stringify(pmd.messages));
 };
-pmd.getSelectedChoiceValue = function(element) {
-      if (element.type != "radio"){ 
-        return "";
-      }
-      let label_id = element.getAttribute("aria-labelledby");
-      let label_element = document.getElementById(label_id);
-      return label_element.firstElementChild.innerText;
+
+pmd.addSelectedChoiceValue = function() {
+  pmd.addMessage({
+    text: pmd.question.selectedChoiceValue,
+    me: true,
+    statement: false
+  });
 };
 
 pmd.hideLoaders = function() {
@@ -169,34 +188,15 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
 
   if (type !== 'next') {
     console.log('submit is not next');
+    pmd.saveMessagesToEmbeddedData();
     return;
   }
 
-  if (!pmd.question.addResponse) {
-    return;
+  pmd.updateSelectedValues();
+
+  if (pmd.question.addSelectedChoiceValue) {
+    pmd.addSelectedChoiceValue();
   }
-
-  let form = document.getElementById('Page');
-
-  if (!form) {
-    console.log('no form');
-    return;
-  }
-
-  let inputs = form.getInputs();
-  console.log(inputs);
-
-  inputs.forEach(i => {
-    if (!i.checked) {
-      return;
-    }
-
-    pmd.addMessage({
-      text: document.getElementById(i.attributes["aria-labelledby"].value).textContent,
-      me: true,
-      statement: false
-    });
-  });
 
   pmd.saveMessagesToEmbeddedData();
 
