@@ -161,6 +161,19 @@ pmd.negotiate = function() {
   let nextOffer = pmd.getNextOffer(lastOffer);
 
   if (pmd.question.selectedChoiceRecodeValue >= nextOffer) {
+    if (pmd.question.selectedChoiceRecodeValue == lastOffer){
+      pmd.addMessage({
+        text: `You accepted the candidate's offer of $${lastOffer}k.`,
+        me: true,
+        statement: true
+      });
+    }else{
+      pmd.addMessage({
+        text: `The candidate accepted your offer of $${pmd.question.selectedChoiceRecodeValue}k`,
+        me: false,
+        statement: true
+      });
+    }
     return;
   }
 
