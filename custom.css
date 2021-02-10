@@ -182,6 +182,10 @@
     animation-delay: 4.5s;
     animation-fill-mode: backwards;
   }
+
+  #Buttons.choices-fade {
+      animation-delay: 4.95s;
+  }
   
   .response {
     display: flex;
