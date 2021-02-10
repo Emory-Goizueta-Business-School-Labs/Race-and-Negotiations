@@ -175,7 +175,7 @@ pmd.negotiate = function() {
         statement: true
       });
     }
-    pmd.saveMessagesToEmbeddedData();
+    
     return;
   }
 
@@ -242,16 +242,16 @@ Qualtrics.SurveyEngine.addOnReady(function()
   }   
 });
 
-Qualtrics.SurveyEngine.addOnUnload(function() {
-  console.log('headerOnUnload', { pmd });
-});
-
 Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
   console.log('headerOnPageSubmit', {pmd, type});
 
   if (type !== 'next') {
     console.log('submit is not next');
-    pmd.saveMessagesToEmbeddedData();
+    return;
+  }
+
+  if (!pmd.question.context) {
+    console.log('not a chat question');
     return;
   }
 
@@ -264,6 +264,10 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
   if (pmd.question.negotiate) {
     pmd.negotiate();
   }
+});
 
+
+Qualtrics.SurveyEngine.addOnUnload(function() {
+  console.log('headerOnUnload', { pmd });
   pmd.saveMessagesToEmbeddedData();
 });
