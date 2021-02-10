@@ -27,6 +27,14 @@ var pmd = {
     question: {}
 };
 
+pmd.questionInit = function(questionContext) {
+  pmd.question = {
+    context: questionContext,
+    negotiate: false,
+    addSelectedChoiceValue: false,
+  };
+};
+
 pmd.addMessage = function(message) {
     pmd.messages.push(message);
 }; 
