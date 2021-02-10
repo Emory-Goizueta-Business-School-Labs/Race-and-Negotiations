@@ -50,7 +50,7 @@ pmd.updateSelectedValues = function() {
     console.log('more than 1 choice selected');
   }
 
-  pmd.question.selectedChoiceText = document.getElementById(`${pmd.question.context.questionId}-${selectedChoices[0]}-label`).textContent;
+  pmd.question.selectedChoiceText = Qualtrics.SurveyEngine.QuestionInfo[pmd.question.context.questionId].Choices[selectedChoices[0]];//document.getElementById(`${pmd.question.context.questionId}-${selectedChoices[0]}-label`).textContent;
   pmd.question.selectedChoiceRecodeValue = pmd.question.context.getChoiceRecodeValue(selectedChoices[0]);
 };
 
