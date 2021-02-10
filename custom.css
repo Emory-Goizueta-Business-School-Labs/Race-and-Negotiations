@@ -1,5 +1,5 @@
 /* needed to avoid FOUT on chat questions */
-.QuestionBody  {
+.QuestionBody, #Buttons  {
     animation: fadein 0.1s;
     animation-delay: 0.3s;
     animation-fill-mode: backwards;

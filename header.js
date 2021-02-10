@@ -241,7 +241,13 @@ Qualtrics.SurveyEngine.addOnReady(function()
     if (choiceContainer) {
       choiceContainer.className += " choices-fade";
     }
-    
+
+    let buttons = document.getElementById('Buttons');
+
+    if (buttons) {
+      buttons.className += " choices-fade";
+    }
+
     pmd.messagesToChat(document.getElementById('chat-history'), pmd.messages);
   }   
 });
