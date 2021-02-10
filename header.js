@@ -32,7 +32,7 @@ pmd.questionInit = function(questionContext) {
     context: questionContext,
     negotiate: false,
     addSelectedChoiceValue: false,
-    selectedChoiceText: '',
+    selectedChoiceLabel: '',
     selectedChoiceRecodeValue: ''
   };
 };
@@ -43,14 +43,14 @@ pmd.updateSelectedValues = function() {
 
   if (selectedChoices.length === 0) {
     pmd.selectedChoiceRecodeValue = '';
-    pmd.selectedChoiceText = '';
+    pmd.selectedChoiceLabel = '';
   }
 
   if (selectedChoices.length > 1) {
     console.log('more than 1 choice selected');
   }
 
-  pmd.question.selectedChoiceText = Qualtrics.SurveyEngine.QuestionInfo[pmd.question.context.questionId].Choices[selectedChoices[0]];//document.getElementById(`${pmd.question.context.questionId}-${selectedChoices[0]}-label`).textContent;
+  pmd.question.selectedChoiceLabel = Qualtrics.SurveyEngine.QuestionInfo[pmd.question.context.questionId].Choices[selectedChoices[0]];//document.getElementById(`${pmd.question.context.questionId}-${selectedChoices[0]}-label`).textContent;
   pmd.question.selectedChoiceRecodeValue = pmd.question.context.getChoiceRecodeValue(selectedChoices[0]);
 };
 
@@ -64,7 +64,7 @@ pmd.saveMessagesToEmbeddedData = function() {
 
 pmd.addSelectedChoiceValue = function() {
   pmd.addMessage({
-    text: pmd.question.selectedChoiceValue,
+    text: pmd.question.selectedChoiceLabel,
     me: true,
     statement: false
   });
