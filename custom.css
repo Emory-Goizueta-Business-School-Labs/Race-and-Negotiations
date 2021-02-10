@@ -177,7 +177,7 @@
     animation-fill-mode: backwards;
   }
 
-  .choices-fade {
+  .choices-fade, #Buttons.choices-fade {
     animation: fadein 0.2s;
     animation-delay: 4.5s;
     animation-fill-mode: backwards;
