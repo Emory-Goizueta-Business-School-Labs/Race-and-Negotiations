@@ -149,7 +149,7 @@ pmd.getLastOffer = function() {
 };
 
 pmd.setLastOffer = function(value) {
-  Qualtrics.SurveyEngine.setEmbeddedData("LastOffer", value);
+  return parseInt(Qualtrics.SurveyEngine.setEmbeddedData("LastOffer", value), 10);
 };
 
 pmd.getNextOffer = function(lastOffer) {
@@ -160,12 +160,14 @@ pmd.negotiate = function() {
   let lastOffer = pmd.getLastOffer();
   let nextOffer = pmd.getNextOffer(lastOffer);
 
-  if (pmd.selectedChoiceValue >= nextOffer) {
+  if (pmd.question.selectedChoiceRecodeValue >= nextOffer) {
     return;
   }
 
+
+
   pmd.addMessage({
-    text: `You counter offered $${pmd.selectedChoiceLabel}k`,
+    text: `You counter offered $${pmd.question.selectedChoiceRecodeValue}k`,
     me: true,
     statement: true
   });
