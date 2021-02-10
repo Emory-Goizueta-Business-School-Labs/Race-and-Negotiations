@@ -32,7 +32,7 @@ pmd.questionInit = function(questionContext) {
     context: questionContext,
     negotiate: false,
     addSelectedChoiceValue: false,
-    selectedChoiceValue: '',
+    selectedChoiceText: '',
     selectedChoiceRecodeValue: ''
   };
 };
@@ -43,14 +43,14 @@ pmd.updateSelectedValues = function() {
 
   if (selectedChoices.length === 0) {
     pmd.selectedChoiceRecodeValue = '';
-    pmd.selectedChoiceValue = '';
+    pmd.selectedChoiceText = '';
   }
 
   if (selectedChoices.length > 1) {
     console.log('more than 1 choice selected');
   }
 
-  pmd.question.selectedChoiceValue = pmd.question.context.getChoiceValue(selectedChoices[0]);
+  pmd.question.selectedChoiceText = document.getElementById(`${pmd.question.context.questionId}-${selectedChoices[0]}-label`).textContent;
   pmd.question.selectedChoiceRecodeValue = pmd.question.context.getChoiceRecodeValue(selectedChoices[0]);
 };
 
