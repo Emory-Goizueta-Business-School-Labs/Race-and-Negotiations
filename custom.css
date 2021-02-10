@@ -1,7 +1,7 @@
 /* needed to avoid FOUT on chat questions */
-.QuestionBody {
+.QuestionBody  {
     animation: fadein 0.1s;
-    animation-delay: 1s;
+    animation-delay: 0.3s;
     animation-fill-mode: backwards;
 }
 
@@ -179,7 +179,7 @@
 
   .choices-fade {
     animation: fadein 0.2s;
-    animation-delay: 5s;
+    animation-delay: 4.5s;
     animation-fill-mode: backwards;
   }
   
