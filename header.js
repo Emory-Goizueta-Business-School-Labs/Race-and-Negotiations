@@ -100,7 +100,7 @@ pmd.addMessageToChatList = function(chatList, message, shouldLoad) {
   
   li.className = classes.join(' ');
   
-  if (shouldLoad && !message.statement && !message.met) {
+  if (shouldLoad && !message.me) {
     let sendingMessage = document.createElement('span');
     sendingMessage.className = 'sending-message';
     sendingMessage.innerText = message.text;
