@@ -253,7 +253,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 });
 
 Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
-  console.log('headerOnPageSubmit', {pmd, type});
+  console.log('headerOnPageSubmit', {pmd, type, "savedPageSubmitData": Qualtrics.SurveyEngine.savedPageSubmitData});
 
   if (type !== 'next') {
     console.log('submit is not next');
