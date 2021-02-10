@@ -217,6 +217,8 @@ Qualtrics.SurveyEngine.addOnload(function()
 Qualtrics.SurveyEngine.addOnReady(function()
 {
   console.log('headerOnReady', {pmd, 'embeddedMessages':'${e://Field/messages}', context: this });
+  let choiceContainer = pmd.question.context.getChoiceContainer();
+  choiceContainer.className += " choices-fade";
   pmd.messagesToChat(document.getElementById('chat-history'), pmd.messages);
 });
 
