@@ -50,8 +50,8 @@ pmd.updateSelectedValues = function() {
     console.log('more than 1 choice selected');
   }
 
-  pmd.question.selectedChoiceValue = pmd.question.context.getChoiceValue(selectedChoices);
-  pmd.question.selectedChoiceRecodeValue = pmd.question.context.getChoiceRecodeValue(selectedChoices);
+  pmd.question.selectedChoiceValue = pmd.question.context.getChoiceValue(selectedChoices[0]);
+  pmd.question.selectedChoiceRecodeValue = pmd.question.context.getChoiceRecodeValue(selectedChoices[0]);
 };
 
 pmd.addMessage = function(message) {
