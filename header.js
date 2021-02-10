@@ -174,6 +174,7 @@ pmd.negotiate = function() {
         statement: true
       });
     }
+    pmd.saveMessagesToEmbeddedData();
     return;
   }
 
