@@ -2,6 +2,7 @@
 .QuestionBody {
     animation: fadein 0.1s;
     animation-delay: 1s;
+    animation-fill-mode: backwards;
 }
 
 .chat {
