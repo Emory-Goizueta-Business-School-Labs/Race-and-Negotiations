@@ -44,6 +44,7 @@ pmd.updateSelectedValues = function() {
   if (selectedChoices.length === 0) {
     pmd.selectedChoiceRecodeValue = '';
     pmd.selectedChoiceLabel = '';
+    return;
   }
 
   if (selectedChoices.length > 1) {
