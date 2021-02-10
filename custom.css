@@ -1,6 +1,6 @@
 /* needed to avoid FOUT on chat questions */
 #Page {
-    animation: fadein 0.2s;
+    animation: fadein 2s;
 }
 
 .chat {
