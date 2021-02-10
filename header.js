@@ -143,6 +143,45 @@ pmd.messagesToChat = function(chatOrderedList, messages) {
   chatOrderedList.appendChild(fragment);
 };
 
+pmd.getLastOffer = function() {
+  return parseInt(Qualtrics.SurveyEngine.getEmbeddedData("LastOffer"));
+  //what if LastOffer is empty?
+};
+
+pmd.setLastOffer = function(value) {
+  Qualtrics.SurveyEngine.setEmbeddedData("LastOffer", value);
+};
+
+pmd.getNextOffer = function(lastOffer) {
+  return lastOffer - 2;
+};
+
+pmd.negotiate = function() {
+  let lastOffer = pmd.getLastOffer();
+  let nextOffer = pmd.getNextOffer(lastOffer);
+
+  if (pmd.selectedChoiceValue >= nextOffer) {
+    return;
+  }
+
+  pmd.addMessage({
+    text: `You counter offered $${pmd.selectedChoiceLabel}k`,
+    me: true,
+    statement: true
+  });
+  pmd.addMessage({
+    text: `The candidate has rejected your offer and has countered with $${nextOffer}k`,
+    me: false,
+    statement: true
+  });
+
+  pmd.setLastOffer(nextOffer);
+};
+
+
+
+
+
 Qualtrics.SurveyEngine.addOnload(function()
 {
   console.log("headerOnload", {pmd, 'Qualtrics.SurveyEngine.getEmbeddedData(\'messages\');': Qualtrics.SurveyEngine.getEmbeddedData('messages')});
@@ -198,7 +237,9 @@ Qualtrics.SurveyEngine.addOnPageSubmit(function(type) {
     pmd.addSelectedChoiceValue();
   }
 
-  pmd.saveMessagesToEmbeddedData();
+  if (pmd.question.negotiate) {
+    pmd.negotiate();
+  }
 
-  console.log('embeddedData', Qualtrics.SurveyEngine.getEmbeddedData('messages'));
+  pmd.saveMessagesToEmbeddedData();
 });
