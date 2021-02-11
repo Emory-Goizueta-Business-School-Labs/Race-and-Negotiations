@@ -35,11 +35,28 @@
     background: #eee;
     margin: 1em;
     padding: 0.5em;
+    margin-left: 60px;
     max-width: 66%;
+    margin-bottom: calc(30px + 1em);
     border-radius: 10px 10px 10px 10px;
     position: relative;
   }
-  
+
+  .Skin .QuestionText .chat .message + .message.me,
+  .Skin .QuestionText .chat .message.me + .message {
+    margin-top: 1em;
+}
+
+
+
+  .message .avatar {
+      width: 50px;
+      height: auto;
+      position: absolute;
+      left: -60px;
+      bottom: -30px;
+  }
+
   .message::after {
     content: '';
     position: absolute;
@@ -54,7 +71,23 @@
   .Skin .QuestionText .chat .message.me {
     background: lightblue;
     align-self: flex-end;
+    margin-right: 60px;
+    margin-left: 0;
   }
+
+
+  .message.me .avatar {
+    right: -60px;
+    left: auto;
+}
+
+.Skin .QuestionText .chat .message.statement{
+    margin-bottom: 1em;
+}
+.message.statement .avatar {
+    bottom: 50%;
+    margin-bottom: -25px;
+}
   
   .message.me::after{
     background: lightblue;  
