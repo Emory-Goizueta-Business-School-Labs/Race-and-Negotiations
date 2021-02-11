@@ -35,9 +35,9 @@
     background: #eee;
     margin: 1em;
     padding: 0.5em;
-    margin-left: 60px;
+    margin-left: 80px;
     max-width: 66%;
-    margin-bottom: calc(30px + 1em);
+    margin-bottom: calc(40px + 1em);
     border-radius: 10px 10px 10px 10px;
     position: relative;
   }
@@ -50,11 +50,11 @@
 
 
   .message .avatar {
-      width: 50px;
+      width: 70px;
       height: auto;
       position: absolute;
-      left: -60px;
-      bottom: -30px;
+      left: -80px;
+      bottom: -40px;
   }
 
   .message::after {
@@ -71,13 +71,13 @@
   .Skin .QuestionText .chat .message.me {
     background: lightblue;
     align-self: flex-end;
-    margin-right: 60px;
+    margin-right: 80px;
     margin-left: 0;
   }
 
 
   .message.me .avatar {
-    right: -60px;
+    right: -80px;
     left: auto;
 }
 
@@ -86,7 +86,7 @@
 }
 .message.statement .avatar {
     bottom: 50%;
-    margin-bottom: -25px;
+    margin-bottom: -35px;
 }
   
   .message.me::after{
