@@ -243,7 +243,7 @@ Qualtrics.SurveyEngine.addOnload(function()
   let d = document.createElement('div');
   d.innerHTML = myAvatar;
 
-  pmd.myAvatar = fragment.childNodes[0].src;
+  pmd.myAvatar = d.childNodes[0].src;
   pmd.theirAvatar = Qualtrics.SurveyEngine.getEmbeddedData('theirAvatar');;
 });
 
