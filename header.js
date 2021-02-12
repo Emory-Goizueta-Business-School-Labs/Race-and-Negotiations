@@ -110,22 +110,23 @@ pmd.addMessageToChatList = function(chatList, message, shouldLoad) {
   }
 
   li.appendChild(avatar);
+
+  let messageSpan = document.createElement('span');
+  messageSpan.innerText = 'sending-message';
   
   if (shouldLoad && !message.me) {
-    let sendingMessage = document.createElement('span');
-    sendingMessage.className = 'sending-message';
-    sendingMessage.innerText = message.text;
-    sendingMessage.style.display = 'none';
+    messageSpan.className = 'sending-message';
+    messageSpan.style.display = 'none';
     
     let loading = document.createElement('span');
     loading.className = 'loading';
     loading.style.display = 'inline-block';
     
-    li.appendChild(sendingMessage);
+    li.appendChild(messageSpan);
     li.appendChild(loading);
   }
   else {
-    li.appendChild(message.text);
+    li.appendChild(messageSpan);
   }
   
   chatList.appendChild(li);
