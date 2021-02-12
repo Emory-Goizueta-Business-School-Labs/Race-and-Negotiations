@@ -239,7 +239,11 @@ Qualtrics.SurveyEngine.addOnload(function()
     });  
   }, pmd.loadingTime);
 
-  pmd.myAvatar = Qualtrics.SurveyEngine.getEmbeddedData('myAvatar');
+  let myAvatar = Qualtrics.SurveyEngine.getEmbeddedData('myAvatar');
+  let fragment = document.createDocumentFragment();
+  fragment.innerHTML = myAvatar;
+  
+  pmd.myAvatar = fragment.childNodes[0].src;
   pmd.theirAvatar = Qualtrics.SurveyEngine.getEmbeddedData('theirAvatar');;
 });
 
