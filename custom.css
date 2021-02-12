@@ -42,6 +42,14 @@
     position: relative;
   }
 
+  .Skin .QuestionText .chat .no-avatars .message {
+      margin-left: 0;
+  }
+
+  .Skin .QuestionText .chat .no-avatars .message.me {
+    margin-right: 0;
+  }
+
   .Skin .QuestionText .chat .message + .message.me,
   .Skin .QuestionText .chat .message.me + .message {
     margin-top: 1em;
