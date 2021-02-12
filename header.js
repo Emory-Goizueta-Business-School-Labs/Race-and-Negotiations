@@ -182,6 +182,11 @@ pmd.negotiate = function() {
       });
     }else{
       pmd.addMessage({
+        text: `You counter offered $${pmd.question.selectedChoiceRecodeValue}k`,
+        me: true,
+        statement: true
+      });
+        pmd.addMessage({
         text: `The candidate accepted your offer of $${pmd.question.selectedChoiceRecodeValue}k`,
         me: false,
         statement: true
@@ -190,9 +195,6 @@ pmd.negotiate = function() {
     
     return;
   }
-
-
-
   pmd.addMessage({
     text: `You counter offered $${pmd.question.selectedChoiceRecodeValue}k`,
     me: true,
