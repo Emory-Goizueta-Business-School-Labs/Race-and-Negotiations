@@ -130,10 +130,10 @@ pmd.addMessageToChatList = function(chatList, message, shouldLoad) {
   
   chatList.appendChild(li);
   
-  //window.setTimeout(() => {
-  //  pmd.hideLoaders();
-  //  pmd.showSendingMessages();
-  //}, pmd.loadingTime);
+  window.setTimeout(() => {
+    pmd.hideLoaders();
+    pmd.showSendingMessages();
+  }, pmd.loadingTime);
 };
 
 pmd.messagesToChat = function(chatOrderedList, messages) {

@@ -55,6 +55,7 @@
       position: absolute;
       left: -80px;
       bottom: -40px;
+      max-width: 70px;
   }
 
   .message::after {
