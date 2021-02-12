@@ -112,7 +112,7 @@ pmd.addMessageToChatList = function(chatList, message, shouldLoad) {
   li.appendChild(avatar);
 
   let messageSpan = document.createElement('span');
-  messageSpan.innerText = 'sending-message';
+  messageSpan.innerText = message.text;
   
   if (shouldLoad && !message.me) {
     messageSpan.className = 'sending-message';
