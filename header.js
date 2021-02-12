@@ -100,6 +100,16 @@ pmd.addMessageToChatList = function(chatList, message, shouldLoad) {
   }
   
   li.className = classes.join(' ');
+
+  let avatar = document.createElement('img');
+  avatar.src = pmd.theirAvatar;
+  avatar.className = "avatar";
+
+  if (message.me) {
+    avatar.src = pmd.myAvatar;
+  }
+
+  li.appendChild(avatar);
   
   if (shouldLoad && !message.me) {
     let sendingMessage = document.createElement('span');
@@ -227,6 +237,9 @@ Qualtrics.SurveyEngine.addOnload(function()
       l.style.display = 'none';
     });  
   }, pmd.loadingTime);
+
+  pmd.myAvatar = Qualtrics.SurveyEngine.getEmbeddedData('myAvatar');
+  pmd.theirAvatar = Qualtrics.SurveyEngine.getEmbeddedData('theirAvatar');;
 });
 
 Qualtrics.SurveyEngine.addOnReady(function()
