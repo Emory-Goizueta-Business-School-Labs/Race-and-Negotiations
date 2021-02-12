@@ -267,6 +267,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
     }
 
     pmd.messagesToChat(document.getElementById('chat-history'), pmd.messages);
+    window.scrollTo(0,document.body.scrollHeight);
   }   
 });
 
