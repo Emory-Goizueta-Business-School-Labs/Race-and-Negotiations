@@ -27,7 +27,8 @@ var pmd = {
     question: {}
 };
 
-pmd.questionInit = function(questionContext) {
+pmd.questionInit = function(questionContext, loadingTime) {
+  pmd.loadingTime = typeof loadingTime !== 'number' ? 3000 : loadingTime;
   pmd.question = {
     context: questionContext,
     negotiate: false,
