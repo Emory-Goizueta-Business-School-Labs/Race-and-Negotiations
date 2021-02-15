@@ -270,7 +270,15 @@ Qualtrics.SurveyEngine.addOnReady(function()
     }
 
     pmd.messagesToChat(document.getElementById('chat-history'), pmd.messages);
-    window.scrollTo(0,document.body.scrollHeight);
+
+    let messageElements = document.querySelectorAll('.chat-history .message');
+
+    if (messageElements.length < 3 && message.Elements.length > 0) {
+      window.scrollTo(0,messageElements[0].offsetTop - 90);
+    }
+    else {
+      window.scrollTo(0, messageElements[messageElements.length - 2].offsetTop - 90);
+    }
   }   
 });
 
