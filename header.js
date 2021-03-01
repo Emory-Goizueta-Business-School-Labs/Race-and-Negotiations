@@ -273,7 +273,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 
     let messageElements = document.querySelectorAll('.chat-history .message');
 
-    if (messageElements.length < 3 && message.Elements.length > 0) {
+    if (messageElements.length < 3 && messageElements.length > 0) {
       window.scrollTo(0,messageElements[0].offsetTop - 90);
     }
     else {
